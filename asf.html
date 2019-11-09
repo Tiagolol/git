@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Chat</title>
+        <script>
+            document.addEventListener("DOMContentLoaded",()=>{
+                const chatArea = document.getElementById ("chatArea");
+                const form = document.querySelector ("form");
+
+                form.addEventListener("submit",(e)=>{
+                    chatArea.appendChild(document.createElement("p"));
+                    chatArea.lastElementChild.textContent = form.message.value;
+                    e.preventDefault();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <main>
+            <div id="chatArea"></div>
+            <div>
+                <form action="asf.html" method="post">
+                    <label>
+                        A sua mensagem
+                        <input type="text" name="message">
+                    </label>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>

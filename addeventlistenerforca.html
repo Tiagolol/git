@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Jogo da Forca</title>
+        <script>
+            document.addEventListener ("DOMContentLoaded",()=>{
+                const words = ["batata", "couve", "microsoft", "casa", "banana", "viewsonic"];
+                let wordsTry = [];
+                let temAletra = false;
+                let life = 6;
+
+                let randomWord = words[Math.floor(Math.random()*words.length)];
+                console.log(randomWord);
+
+                const gameLayout = document.getElementById("gameLayout").firstElementChild;
+                console.log(gameLayout);
+
+                const lifeEdit = document.getElementById("life");
+
+                const form = document.querySelector("form");
+
+                for(let i = 0; i < randomWord.length; i++){
+                gameLayout.appendChild(document.createElement("span"));
+                gameLayout.lastElementChild.textContent = " _";
+                }
+
+                const spans = gameLayout.querySelectorAll("span");
+
+                form.addEventListener("submit",(e)=> {
+                    const answer = (form.letra.value).toLowerCase();
+                    wordsTry.push(answer);
+                    for(let i = 0; i < randomWord.length; i++){
+                        if(randomWord[i] == answer){
+                            console.log("sim", i);
+                            spans[i].textContent = answer;
+                            temAletra = true;
+                        }
+                    }
+                        if(!temAletra){
+                            life--;
+                        if(life == 0){
+                            alert("Game over");
+                        }
+                    }
+                    lifeEdit.textContent = life;
+                    e.preventDefault();
+
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Hanged-Man</h1>
+        </header>
+        <main>
+            <div id="gameLayout">
+                <h2></h2>
+            </div>
+            <div>
+                <form action="addeventlistenerforca.html" method="post">
+                    <div>
+                        <label>
+                            Sua letra:
+                            <input type="text" name="letra">
+                            <button type="submit">Enviar!</button>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <h3>Life: </h3>
+                <span id="life">6</span>
+            </div>
+        </main>
+    </body>
+</html>

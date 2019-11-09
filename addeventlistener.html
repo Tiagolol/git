@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>addEventListener</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", () =>{
+               const cenas=()=> console.log ("funciona?");
+               /*adiciona evento*/
+                document.querySelector("button").addEventListener("click",cenas);
+                /*cancela evento*/
+                document.querySelector("button").removeEventListener("click",cenas);
+            });
+
+        </script>
+    </head>
+    <body>
+        <button type="button" onclick="">Clica-me</button>
+    </body>
+</html>
